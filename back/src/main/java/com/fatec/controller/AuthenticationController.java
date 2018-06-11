@@ -3,6 +3,8 @@ package com.fatec.controller;
 import com.fatec.config.TokenProvider;
 import com.fatec.dto.AuthTokenDTO;
 import com.fatec.dto.LoginUserDTO;
+import com.fatec.dto.UserDTO;
+import com.fatec.model.User;
 import com.fatec.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -15,7 +17,6 @@ import org.springframework.web.bind.annotation.*;
 
 @CrossOrigin(origins = "*", maxAge = 3600)
 @RestController
-@RequestMapping("/token")
 public class AuthenticationController {
 
     @Autowired
@@ -27,7 +28,7 @@ public class AuthenticationController {
     @Autowired
     private UserService userService;
 
-    @RequestMapping(value = "/generate-token", method = RequestMethod.POST)
+    @RequestMapping(value = "/login", method = RequestMethod.POST)
     public ResponseEntity<?> register(@RequestBody LoginUserDTO loginUserDTO) throws AuthenticationException {
 
         final Authentication authentication = authenticationManager.authenticate(
@@ -39,6 +40,11 @@ public class AuthenticationController {
         SecurityContextHolder.getContext().setAuthentication(authentication);
         final String token = jwtTokenUtil.generateToken(authentication);
         return ResponseEntity.ok(new AuthTokenDTO(token));
+    }
+
+    @RequestMapping(value="/signup", method = RequestMethod.POST)
+    public User saveUser(@RequestBody UserDTO userDTO){
+        return userService.save(userDTO);
     }
 
 }
