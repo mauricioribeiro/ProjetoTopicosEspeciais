@@ -3,6 +3,7 @@
 		<h1>Usuário logado!</h1>
 		<h2 ng-show="jwt">Seu JWT é:</h2>
 		<pre ng-show="jwt" class="jwt"><code>{{jwt}}</code></pre>
+		<div ng-show="denied" class="alert alert-danger" role="alert">Você não tem permissão para acessar a página requisitada</div>
 		<p><a class="btn btn-primary btn-lg" role="button" ng-click="goToUsers()">Listar Usuários (necessita de permissão)</a></p>
 	</div>
 </div>

@@ -19,6 +19,10 @@ angular.module( 'sample.home', [
 	$scope.jwt = store.get('jwt');
 	$scope.decodedJwt = $scope.jwt && jwtHelper.decodeToken($scope.jwt);
 
+	$scope.goToUsers = function(){
+		
+	};
+
 	$scope.callAnonymousApi = function() {
     // Just call the API as you'd do using $http
     callApi('Anonymous', RestService.getUrl() + '/api/random-quote');
