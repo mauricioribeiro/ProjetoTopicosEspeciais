@@ -3,11 +3,6 @@
 		<h1>Usuário logado!</h1>
 		<h2 ng-show="jwt">Seu JWT é:</h2>
 		<pre ng-show="jwt" class="jwt"><code>{{jwt}}</code></pre>
-		<pre ng-show="jwt" class="jwt"><code>{{decodedJwt | json}}</code></pre>
-		<p>Click any of the buttons to call an API and get a response</p>
-		<p><a class="btn btn-primary btn-lg" role="button" ng-click="callAnonymousApi()">Call Anonymous API</a></p>
-		<p><a class="btn btn-primary btn-lg" role="button" ng-click="callSecuredApi()">Call Secure API</a></p>
-		<h2 ng-show="response">The response of calling the <span class="red">{{api}}</span> API is:</h2>
-		<h3 ng-show="response">{{response}}</h3>
+		<p><a class="btn btn-primary btn-lg" role="button" ng-click="goToUsers()">Listar Usuários (necessita de permissão)</a></p>
 	</div>
 </div>

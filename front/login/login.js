@@ -13,6 +13,7 @@ angular.module( 'sample.login', [
 .controller( 'LoginCtrl', function LoginController( $scope, $http, store, $state, RestService) {
 
 	$scope.user = {};
+	store.set('jwt', null);
 
 	$scope.login = function() {
 		$http({
@@ -22,8 +23,8 @@ angular.module( 'sample.login', [
 		}).then(function(response) {
 			store.set('jwt', response.data.token);
 			$state.go('home');
-		}, function(error) {
-			alert(error.data);
+		}, function(response) {
+			alert((response.status === 401) ? 'Login incorreto! Tente novamente' : 'API indisponível. Tente mais tarde');
 		});
 	}
 
