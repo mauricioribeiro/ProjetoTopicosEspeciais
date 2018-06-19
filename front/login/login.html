@@ -9,7 +9,7 @@
 			<label for="password">Senha</label>
 			<input type="password" class="form-control" id="password" ng-model="user.password" placeholder="Senha">
 		</div>
-		<button type="submit" class="btn btn-success" ng-disabled="!user.username || !user.password" ng-click="login()">Entrar</button>
+		<button type="submit" class="btn btn-success" ng-disabled="!user.username || !user.password || loading" ng-click="login()">Entrar <i class="fa fa-spinner fa-pulse" ng-show="loading"></i></button>
 	</form>
 	<a ui-sref="signup()">Cadastre-se</a>
 </div>

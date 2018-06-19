@@ -37,7 +37,7 @@ public class AuthenticationController {
                         loginUserDTO.getPassword()
                 )
         );
-        SecurityContextHolder.getContext().setAuthentication(authentication);
+        SecurityContextHolder   .getContext().setAuthentication(authentication);
         final String token = jwtTokenUtil.generateToken(authentication);
         return ResponseEntity.ok(new AuthTokenDTO(token));
     }

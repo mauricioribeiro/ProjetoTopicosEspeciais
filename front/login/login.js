@@ -16,6 +16,8 @@ angular.module( 'sample.login', [
 	store.set('jwt', null);
 
 	$scope.login = function() {
+		$scope.loading = true;
+
 		$http({
 			url: RestService.getUrl() + '/login',
 			method: 'POST',
@@ -25,6 +27,7 @@ angular.module( 'sample.login', [
 			$state.go('home');
 		}, function(response) {
 			alert((response.status === 401) ? 'Login incorreto! Tente novamente' : 'API indisponível. Tente mais tarde');
+			$scope.loading = false;
 		});
 	}
 
