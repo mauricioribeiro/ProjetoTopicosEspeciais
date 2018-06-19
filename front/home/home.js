@@ -9,19 +9,25 @@ angular.module( 'sample.home', [
 		url: '/',
 		controller: 'HomeCtrl',
 		templateUrl: 'home/home.html',
+		params: {denied: null},
 		data: {
 			requiresLogin: true
 		}
 	});
 })
-.controller( 'HomeCtrl', function HomeController( $scope, $http, store, jwtHelper, RestService) {
+.controller( 'HomeCtrl', function HomeController( $scope, $http, $state, $stateParams, store, jwtHelper, RestService) {
 
 	$scope.jwt = store.get('jwt');
 	$scope.decodedJwt = $scope.jwt && jwtHelper.decodeToken($scope.jwt);
+	$scope.denied = $stateParams.denied;
 
 	$scope.goToUsers = function(){
-		
+		$state.go('users');
 	};
+
+	$scope.goToLogin = function(){
+		$state.go('login');
+	}
 
 	$scope.callAnonymousApi = function() {
     // Just call the API as you'd do using $http

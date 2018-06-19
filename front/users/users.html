@@ -1,6 +1,26 @@
 <div class="home">
 	<div class="jumbotron centered">
 		<h1>Lista de usuários</h1>
+		<table class="table table-striped">
+  			<thead>
+  				<tr>
+  					<th>ID</th>
+  					<th>Nome</th>
+  					<th>Usuário</th>
+  				</tr>
+  			</thead>
+  			<tbody>
+  				<tr ng-repeat="user in users" ng-show="users.length">
+  					<td>#{{ user.id }}</td>
+  					<td>{{ user.name }}</td>
+  					<td>{{ user.username }}</td>
+  				</tr>
+  				<tr ng-show="!users.length">
+  					<td colspan="3">Nenhum usuário encontrado</td>
+  				</tr>
+  			</tbody>
+		</table>
 
+    <p><a class="btn btn-primary" role="button" ng-click="goToHome()">Ir para Início</a> <a class="btn btn-danger" role="button" ng-click="goToLogin()">Sair</a></p>
 	</div>
 </div>

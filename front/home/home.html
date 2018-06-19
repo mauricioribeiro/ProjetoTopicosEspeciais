@@ -1,9 +1,10 @@
 <div class="home">
 	<div class="jumbotron centered">
 		<h1>Usuário logado!</h1>
-		<h2 ng-show="jwt">Seu JWT é:</h2>
+		<h3><i class="fa fa-info-circle"></i> A listagem de usuários necessita de permissão</h3>
+		<h4 ng-show="jwt">Seu JWT é:</h4>
 		<pre ng-show="jwt" class="jwt"><code>{{jwt}}</code></pre>
 		<div ng-show="denied" class="alert alert-danger" role="alert">Você não tem permissão para acessar a página requisitada</div>
-		<p><a class="btn btn-primary btn-lg" role="button" ng-click="goToUsers()">Listar Usuários (necessita de permissão)</a></p>
+		<p><a class="btn btn-primary" role="button" ng-click="goToUsers()">Listar Usuários</a> <a class="btn btn-danger" role="button" ng-click="goToLogin()">Sair</a></p>
 	</div>
 </div>
