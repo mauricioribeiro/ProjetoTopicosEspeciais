@@ -38,7 +38,7 @@ angular.module( 'sample.users', [
 			$scope.users = response.data;
 			$scope.loading = false;
 		}, function(response) {
-			if(response.status === 401){
+			if(response.status === 403){
 				$state.go('home', {denied: true});
 			} else {
 				alert('API indisponível. Tente mais tarde');

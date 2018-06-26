@@ -16,16 +16,13 @@ public class UserController {
     @Autowired
     private UserService userService;
 
-    //@Secured({"ROLE_ADMIN", "ROLE_USER"})
     @PreAuthorize("hasRole('ADMIN')")
     @RequestMapping(value="/users", method = RequestMethod.GET)
     public List<User> listUser(){
         return userService.findAll();
     }
 
-    //@Secured("ROLE_USER")
     @PreAuthorize("hasRole('USER')")
-    ////@PreAuthorize("hasAnyRole('USER', 'ADMIN')")
     @RequestMapping(value = "/users/{id}", method = RequestMethod.GET)
     public User getOne(@PathVariable(value = "id") Long id){
         return userService.findById(id);
